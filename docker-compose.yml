@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+  main-db:
+    image: mongo:3.4
+    ports:
+        - "27017:27017"
+
+  api:
+    build: .
+    volumes:
+      - "./:/usr/src/app"
+    ports:
+      - 8080:8080
+    links:
+      - main-db
+    environment:
+      - SPRING_DATA_MONGODB_URI: main-db

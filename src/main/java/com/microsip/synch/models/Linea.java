@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Null;
+
 /**
  * Technogi 2016. Todos los derechos reservados
  * Created by carlos_technogi on 3/14/17.
@@ -12,6 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Linea {
 
   @Id
+  @Null
   private String id;
   private String name;
 

@@ -93,4 +93,12 @@ public class GrupoDeLineaController {
     return savedGrupo;
   }
 
+  @RequestMapping(value="/{id}/lineas",method = RequestMethod.POST)
+  Linea createLinea(@RequestBody @Valid final Linea linea,@PathVariable("id")String id){
+    lineaRepo.save(linea);
+    GrupodeLinea grupo = repo.findOne(id);
+    grupo.getLineas().add(linea);
+    repo.save(grupo);
+    return linea;
+  }
 }
